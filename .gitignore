@@ -16,6 +16,8 @@ media/xhs_videos
 # AWS User-specific
 .idea/**/aws.xml
 
+*.txt
+
 # Generated files
 .idea/**/contentModel.xml
 

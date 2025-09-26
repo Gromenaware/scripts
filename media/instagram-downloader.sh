@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Instagram Reel Downloader
-# Usage: ./instagram-downloader.sh <INSTAGRAM_REEL_URL>
-
-# Directory to save downloaded videos
 OUTPUT_DIR="./downloads"
 mkdir -p "$OUTPUT_DIR"
 
@@ -14,10 +10,24 @@ fi
 
 URL="$1"
 
-# Check for yt-dlp
 if ! command -v yt-dlp &> /dev/null; then
     echo "yt-dlp is required. Install it with: pip install yt-dlp"
     exit 2
 fi
 
-yt-dlp "$URL" -o "$OUTPUT_DIR/%(title)s.%(ext)s"
+if ! command -v python3 &> /dev/null; then
+    echo "Python3 is required. Please install it."
+    exit 3
+fi
+
+# Export cookies.txt using Python script
+python3 export_instagram_cookies.py
+if [ ! -f cookies.txt ]; then
+    echo "Failed to export cookies.txt. Aborting."
+    exit 4
+fi
+
+# Use cookies.txt to handle private reels
+yt-dlp --cookies cookies.txt "$URL" -o "$OUTPUT_DIR/%(title)s.%(ext)s"
+echo "Download completed. Files are saved in $OUTPUT_DIR"
+#rm cookies.txt
