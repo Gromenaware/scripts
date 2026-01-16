@@ -23,7 +23,7 @@ VIDEO_URL="$1"
 
 # Download the video with a shortened filename (using video ID)
 echo "Downloading video from $VIDEO_URL..."
-yt-dlp -o "$OUTPUT_DIR/%(id)s.%(ext)s" "$VIDEO_URL"
+yt-dlp -k -o "$OUTPUT_DIR/%(id)s.%(ext)s" "$VIDEO_URL"
 
 if [[ $? -eq 0 ]]; then
     echo "Video downloaded successfully to $OUTPUT_DIR."
