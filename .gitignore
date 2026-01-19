@@ -17,6 +17,9 @@ media/xhs_videos
 .idea/**/aws.xml
 
 *.txt
+*.csv
+*.xlsx
+*.xls
 
 # Generated files
 .idea/**/contentModel.xml
