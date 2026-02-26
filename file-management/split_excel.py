@@ -3,7 +3,7 @@ import numpy as np
 import math
 
 # Load the Excel file
-file_name = '/Users/guillemhernandezsola/Downloads/Contactos_linkedin_120126_agile_6589pax_filtrado.xlsx'
+file_name = 'Contactos_2602026_7881pax.xlsx'
 
 print("Llegint el fitxer Excel...")
 
@@ -21,7 +21,7 @@ total_rows = len(df)
 print(f"Total rows: {total_rows}")
 
 # Number of splits
-n = 5
+n = 6
 # Fem servir math.ceil o np.ceil per assegurar que no deixem files fora
 chunk_size = int(np.ceil(total_rows / n))
 
